@@ -35,5 +35,42 @@ let imagesBox = document.querySelectorAll(".images");
 for (i = 0; i < images.length; i++) {
     imgUrl = images[i].url;
 
-    imagesBox[i].innerHTML = `<img src="${imgUrl}">`; 
-}
+    imagesBox[i].innerHTML = `<img class="image" src="${imgUrl}">`; 
+};
+const imgContainerDom = document.querySelector('.img-container');
+
+// Imposto una variabile in cui dichiaro che l'img che sarà visibile sarà in posizione 0
+let imgShow = 0;
+
+let imagesDom = document.querySelectorAll(".image");
+
+// Aggiungo all'elemento in posizione 0 contenuto in img-container la classe "show" che lo renderà visibile
+imagesDom[imgShow].classList.add('show');
+
+// Richiamo il pulsante 'up' dall'html
+const btnUp = document.querySelector('.up');
+
+// Aggiungo un event listener al pulsante 'up' in modo tale da poterci associare un'azione
+btnUp.addEventListener('click',
+    function () {
+        // Vado all'elemento in posizione 0 e rimuovo la classe "show"
+        imagesDom[imgShow].classList.remove('show');
+
+        // Incremento il valore (la posizione) di imgShow (quindi dell'img che dovrà essere visibile)
+        imgShow++;
+
+        // Aggiungo nuovamente la classe "show" all'elemento incrementato di 1
+        imagesDom[imgShow].classList.add('show');
+    }
+);
+
+// Faccio lo stesso procedimento per il pulsante 'down'
+const btnDown = document.querySelector('.down');
+
+btnDown.addEventListener('click',
+    function () {
+        imagesDom[imgShow].classList.remove('show');
+        imgShow--;
+        imagesDom[imgShow].classList.add('show');
+    }
+);
