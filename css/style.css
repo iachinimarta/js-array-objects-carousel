@@ -15,8 +15,11 @@
 
 }
 
-.image {
+.images {
     position: relative;
+}
+
+.image {
     display: none;
     width: 900px;
     height: 450px;
